@@ -1,564 +1,2177 @@
-<!--Frontend developement project on "Tesla website clone" done during diploma course-->
-<!--Date of completion 17-05-2024 time 11:38 p.m.-->
-<!--Technology used JS,HTML5,CSS-->
-<!--Editor used VS Code-->
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tesla Clone</title>
-    <link rel="icon" href="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fpnghq.com%2Fwp-content%2Fuploads%2Ftesla-logo-transparent-background-768x765.png&f=1&nofb=1&ipt=6c45c79bc7f342f72773c8b6cfe8c94f4893f99dc098ae69961f8986dbaad51f&ipo=images" type="image/x-icon"/>
-    <style>
-        body, html {
-            margin: 0;
-            padding: 0;
-        }
-        .parent {
-            position: relative;
-            width: 99vw;
-            height: 99vh;
-        }
-        .image1 {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            object-position: top;
-        }
-        .image2 {
-            position: absolute;
-            top: 05px;
-            left: 10px;
-            width: 120px;
-            height: auto;
-            border-radius: 50%;
-            padding: 10px;
-        }
-        .text1 {
-            position: absolute;
-            top: 12px;
-            left: 50%;
-            transform: translateX(-50%);
-            color: black;
-            text-align: center;
-            font-size: 18px;
-            font-family: Arial, Helvetica, sans-serif;
-        }
-        .text2 {
-            position: absolute;
-            top: 120px;
-            left: 50%;
-            transform: translateX(-50%);
-            color: black;
-            text-align: center;
-            font-size: 32px;
-            font-family:Arial, Helvetica, sans-serif;
-        }
-        .price-label {
-            font-size: 22px;
-            font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-        }
-       .te{
-            font-size:15px;
-            font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-        }
-        a {
-            color:black;
-            text-decoration: none;
-        }
-        a:hover {
-            text-decoration:none; 
-            cursor:pointer;  
-        }
-       .question-mark {
-            position: absolute;
-            top: 12px;
-            right: 10px;
-        }
-       .dropbtn
-        {
-            border:black;
-            padding:0px;
-            font-size: 0px;
-  
-        }
-        .dropdown {
-            position: relative;
-            display: inline-block;
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Tesla-inspired responsive frontend development project.">
+<meta name="theme-color" content="#050505">
+<title>Tesla | Electric Performance</title>
 
-        }
-        .dropdown-content {
-            display: none;
-            position: absolute;
-            background-color: #f1f1f1;
-            min-width: 160px;
-            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-            z-index: 1;
-        }
-        .dropdown-content a {
-            color: black;
-            padding: 12px 16px;
-            text-decoration: none;
-            display: block;
-        }
-        .dropdown-content a:hover {background-color: #ddd;}
-        .dropdown:hover .dropdown-content {display: block;}
-.button1 {
-  display: inline-block;
-  border-radius: 4px;
-  background-color:rgb(202, 201, 201);
-  border: none;
-  color:black;
-  text-align: center;
-  font-size: 15px;
-  padding: 15px;
-  width:280px;
-  transition: all 0.5s;
-  cursor: pointer;
-  margin: 5px;
-  margin-left: 20px;
-}
-.button span {
-  cursor: pointer;
-  display: inline-block;
-  position: relative;
-  transition: 0.5s;
-}
-.button span:after {
-  content: '\00bb';
-  position: absolute;
-  opacity: 0;
-  top: 0;
-  right: -20px;
-  transition: 0.5s;
-}
-.button:hover span {
-  padding-right: 25px;
-}
-.button:hover span:after {
-  opacity: 1;
-  right: 0;
-}
-.button2 {
-  display: inline-block;
-  border-radius: 4px;
-  background-color:rgb(34, 34, 34);
-  border: none;
-  color: white;
-  text-align: center;
-  font-size: 15px;
-  padding: 15px;
-  width:280px;
-  transition: all 0.5s;
-  cursor: pointer;
-  margin: 5px;
-  margin-left: 20px;
-}
-.button span {
-  cursor: pointer;
-  display: inline-block;
-  position: relative;
-  transition: 0.5s;
-}
-.button span:after {
-  content: '\00bb';
-  position: absolute;
-  opacity: 0;
-  top: 0;
-  right: -20px;
-  transition: 0.5s;
-}
-.button:hover span {
-  padding-right: 25px;
-}
-.button:hover span:after {
-  opacity: 1;
-  right: 0;
-}
-.info{
-    font-size: 15px;
-    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-    color:white;
-}
-.dash
-{
-    text-decoration: underline;
-    color:white;
-    a{
-        color:white;
-    }
-}
-.text3 {
-            position: absolute;
-            top:650px;
-            left: 50%;
-            transform: translateX(-50%);
-            color: black;
-            text-align: center;
-            font-size: 32px;
-            font-family:Arial, Helvetica, sans-serif;
-        }
-        .parenty {
-            position: relative;
-           width: 99vw;
-           height: 99vh;
-        }
- .ji{
-    font-size: 22px;
-    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 
- } 
- .li{
-  font-size:15px;
-    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
- }  
- .info1
- {
-    font-size: 15px;
-    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-    color:white;
- }
- .da{
+<style>
+
+/* =========================================================
+   GLOBAL RESET
+========================================================= */
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+    scroll-snap-type: y proximity;
+}
+
+body {
+    background: #000;
+    color: #fff;
+    font-family: "Inter", Arial, sans-serif;
+    overflow-x: hidden;
+}
+
+body.menu-open {
+    overflow: hidden;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+button {
+    font-family: inherit;
+}
+
+img {
+    display: block;
+    max-width: 100%;
+}
+
+
+/* =========================================================
+   LOADER
+========================================================= */
+
+#loader {
+    position: fixed;
+    inset: 0;
+    z-index: 99999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #050505;
+    transition:
+        opacity .7s ease,
+        visibility .7s ease;
+}
+
+#loader.hidden {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
+
+.loader-box {
+    width: 220px;
+    text-align: center;
+}
+
+/* Tesla T + Tesla Wordmark */
+.loader-logo {
+    width: 150px;
+    height: auto;
+    margin: 0 auto 25px;
+    filter: brightness(0) invert(1);
+    animation: loaderPulse 1.4s infinite ease-in-out;
+}
+
+.loader-line {
+    width: 100%;
+    height: 2px;
+    background: rgba(255,255,255,.15);
+    overflow: hidden;
+}
+
+.loader-line::after {
+    content: "";
+    display: block;
+    width: 35%;
+    height: 100%;
+    background: #fff;
+    animation: loaderMove 1.2s infinite ease-in-out;
+}
+
+.loader-text {
+    margin-top: 15px;
+    color: #888;
+    font-family: "Space Mono", monospace;
+    font-size: 9px;
+    letter-spacing: 4px;
+}
+
+@keyframes loaderMove {
+    from {
+        transform: translateX(-150%);
+    }
+
+    to {
+        transform: translateX(420%);
+    }
+}
+
+@keyframes loaderPulse {
+    50% {
+        opacity: .45;
+        transform: scale(.9);
+    }
+}
+
+
+/* =========================================================
+   NAVBAR
+========================================================= */
+
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 72px;
+    padding: 0 35px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    z-index: 5000;
+    color: #fff;
+    transition:
+        background .35s ease,
+        backdrop-filter .35s ease,
+        box-shadow .35s ease;
+}
+
+.navbar.scrolled {
+    background: rgba(0,0,0,.55);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    box-shadow:
+        0 5px 30px rgba(0,0,0,.15);
+}
+
+.brand {
+    width: 110px;
+    flex-shrink: 0;
+}
+
+.brand img {
+    width: 100%;
+    filter: brightness(0) invert(1);
+}
+
+.nav-links {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    align-items: center;
+    gap: 3px;
+}
+
+.nav-links a {
+    padding: 10px 14px;
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 600;
+    transition:
+        background .25s ease,
+        transform .25s ease;
+}
+
+.nav-links a:hover {
+    background: rgba(255,255,255,.12);
+    transform: translateY(-1px);
+}
+
+.nav-actions {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.icon-btn {
+    width: 38px;
+    height: 38px;
+    border: 0;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    background: rgba(255,255,255,.12);
+    color: inherit;
+    cursor: pointer;
+    transition:
+        transform .25s ease,
+        background .25s ease;
+}
+
+.icon-btn:hover {
+    transform: scale(1.08);
+    background: rgba(255,255,255,.22);
+}
+
+.icon-btn svg {
+    width: 19px;
+    height: 19px;
+}
+
+.menu-btn {
+    display: none;
+}
+
+
+/* =========================================================
+   MOBILE MENU
+========================================================= */
+
+.mobile-menu {
+    position: fixed;
+    inset: 0;
+    z-index: 4500;
+    padding: 100px 28px 30px;
+    display: flex;
+    flex-direction: column;
+    background: rgba(8,8,8,.96);
+    backdrop-filter: blur(25px);
+    transform: translateX(100%);
+    transition: transform .45s cubic-bezier(.77,0,.18,1);
+}
+
+.mobile-menu.open {
+    transform: translateX(0);
+}
+
+.mobile-menu a {
+    padding: 18px 0;
+    border-bottom: 1px solid rgba(255,255,255,.12);
+    font-size: 23px;
+    font-weight: 600;
+}
+
+.mobile-menu-footer {
+    margin-top: auto;
+    color: #666;
+    font-family: "Space Mono", monospace;
+    font-size: 9px;
+    line-height: 2;
+    letter-spacing: 1px;
+}
+
+
+/* =========================================================
+   HERO
+========================================================= */
+
+.hero {
+    position: relative;
+    min-height: 100svh;
+    width: 100%;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    scroll-snap-align: start;
+}
+
+.hero-image {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    z-index: 0;
+    transform: scale(1.02);
+    transition:
+        transform 1.5s cubic-bezier(.2,.7,.2,1);
+}
+
+.hero.active .hero-image {
+    transform: scale(1);
+}
+
+.hero::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    background:
+        linear-gradient(
+            180deg,
+            rgba(0,0,0,.55) 0%,
+            rgba(0,0,0,.04) 35%,
+            rgba(0,0,0,.12) 60%,
+            rgba(0,0,0,.78) 100%
+        );
+    pointer-events: none;
+}
+
+.hero::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    background:
+        radial-gradient(
+            ellipse at center,
+            transparent 40%,
+            rgba(0,0,0,.35) 100%
+        );
+    pointer-events: none;
+}
+
+
+/* =========================================================
+   HERO CONTENT
+========================================================= */
+
+.hero-content {
+    position: relative;
+    z-index: 3;
+    width: min(1100px, calc(100% - 40px));
+    min-height: 100svh;
+    padding-top: 120px;
+    padding-bottom: 45px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+
+/* =========================================================
+   EYEBROW
+========================================================= */
+
+.eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    margin-bottom: 18px;
+    padding: 8px 13px;
+    border: 1px solid rgba(255,255,255,.25);
+    border-radius: 100px;
+    background: rgba(255,255,255,.08);
+    backdrop-filter: blur(12px);
+    font-family: "Space Mono", monospace;
+    font-size: 9px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    animation: fadeUp .9s both;
+}
+
+.eyebrow::before {
+    content: "";
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #fff;
+    box-shadow: 0 0 12px #fff;
+}
+
+
+/* =========================================================
+   HEADINGS
+========================================================= */
+
+.hero-title {
+    font-size: clamp(48px, 7vw, 88px);
+    line-height: .95;
+    font-weight: 700;
+    letter-spacing: -4px;
+    text-shadow:
+        0 8px 35px rgba(0,0,0,.35);
+    animation: fadeUp 1s .1s both;
+}
+
+.hero-subtitle {
+    margin-top: 17px;
+    font-size: clamp(15px, 1.6vw, 20px);
+    font-weight: 500;
+    letter-spacing: .2px;
+    text-shadow:
+        0 3px 15px rgba(0,0,0,.45);
+    animation: fadeUp 1s .2s both;
+}
+
+.hero-small {
+    margin-top: 7px;
+    color: rgba(255,255,255,.75);
+    font-family: "Space Mono", monospace;
+    font-size: 10px;
+    letter-spacing: .5px;
+    animation: fadeUp 1s .3s both;
+}
+
+
+/* =========================================================
+   MODEL Y SPECIAL VISUAL
+========================================================= */
+
+.model-y-content {
+    align-items: flex-start;
+    text-align: left;
+}
+
+.model-y-copy {
+    max-width: 650px;
+}
+
+.model-y-title {
+    font-size: clamp(60px, 9vw, 115px);
+    letter-spacing: -7px;
+    line-height: .85;
+    font-weight: 700;
+    background:
+        linear-gradient(
+            180deg,
+            #fff 20%,
+            #cfcfcf 70%,
+            #888 100%
+        );
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    text-shadow: none;
+}
+
+.model-y-tagline {
+    margin-top: 22px;
+    font-size: clamp(19px, 2.2vw, 27px);
+    font-weight: 500;
+    letter-spacing: -1px;
+}
+
+.model-y-description {
+    max-width: 510px;
+    margin-top: 12px;
+    color: rgba(255,255,255,.72);
+    font-size: 13px;
+    line-height: 1.7;
+}
+
+
+/* =========================================================
+   SPECS
+========================================================= */
+
+.specs {
+    display: flex;
+    margin-top: 25px;
+    border: 1px solid rgba(255,255,255,.18);
+    border-radius: 15px;
+    overflow: hidden;
+    background: rgba(0,0,0,.24);
+    backdrop-filter: blur(15px);
+    animation: fadeUp 1s .4s both;
+}
+
+.spec {
+    min-width: 115px;
+    padding: 13px 17px;
+    border-right: 1px solid rgba(255,255,255,.14);
+}
+
+.spec:last-child {
+    border-right: 0;
+}
+
+.spec-value {
+    display: block;
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.spec-label {
+    display: block;
+    margin-top: 3px;
+    color: rgba(255,255,255,.55);
+    font-family: "Space Mono", monospace;
+    font-size: 7px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+
+/* =========================================================
+   HERO BOTTOM
+========================================================= */
+
+.hero-bottom {
+    width: 100%;
+    margin-top: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.model-y-content .hero-bottom {
+    align-items: flex-start;
+}
+
+
+/* =========================================================
+   BUTTONS
+========================================================= */
+
+.buttons {
+    display: flex;
+    gap: 12px;
+    animation: fadeUp 1s .5s both;
+}
+
+.btn {
+    position: relative;
+    min-width: 220px;
+    min-height: 49px;
+    padding: 13px 25px;
+    border: 0;
+    border-radius: 6px;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    transition:
+        transform .25s ease,
+        box-shadow .25s ease,
+        background .25s ease;
+}
+
+.btn::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+        linear-gradient(
+            110deg,
+            transparent 20%,
+            rgba(255,255,255,.35),
+            transparent 80%
+        );
+    transform: translateX(-120%);
+    transition: transform .6s ease;
+}
+
+.btn:hover::before {
+    transform: translateX(120%);
+}
+
+.btn:hover {
+    transform: translateY(-3px);
+}
+
+.btn-light {
+    background: rgba(245,245,245,.94);
+    color: #111;
+    box-shadow:
+        0 10px 35px rgba(0,0,0,.2);
+}
+
+.btn-light:hover {
+    background: #fff;
+    box-shadow:
+        0 15px 45px rgba(0,0,0,.3);
+}
+
+.btn-dark {
+    background: rgba(15,15,15,.82);
+    color: #fff;
+    border: 1px solid rgba(255,255,255,.13);
+    backdrop-filter: blur(12px);
+}
+
+.btn-dark:hover {
+    background: #000;
+    box-shadow:
+        0 15px 40px rgba(0,0,0,.45);
+}
+
+
+/* =========================================================
+   DISCLAIMER
+========================================================= */
+
+.disclaimer {
+    max-width: 650px;
+    margin-top: 15px;
+    color: rgba(255,255,255,.65);
+    font-family: "Space Mono", monospace;
+    font-size: 8px;
+    line-height: 1.7;
+}
+
+.disclaimer a {
     text-decoration: underline;
-    color:white;
-    a{
-        color:white;
+}
+
+
+/* =========================================================
+   FLOATING PERFORMANCE BADGE
+========================================================= */
+
+.performance-badge {
+    position: absolute;
+    right: 35px;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 4;
+    width: 125px;
+    height: 125px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    border: 1px solid rgba(255,255,255,.2);
+    background:
+        radial-gradient(
+            circle,
+            rgba(255,255,255,.13),
+            rgba(0,0,0,.18)
+        );
+    backdrop-filter: blur(18px);
+    box-shadow:
+        0 20px 50px rgba(0,0,0,.35);
+    animation:
+        floatBadge 4s ease-in-out infinite;
+}
+
+.performance-badge strong {
+    font-size: 27px;
+    line-height: 1;
+}
+
+.performance-badge span {
+    margin-top: 6px;
+    color: rgba(255,255,255,.6);
+    font-family: "Space Mono", monospace;
+    font-size: 7px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+@keyframes floatBadge {
+    0%,100% {
+        transform: translateY(-50%);
     }
- }  
- .parentu {
-            position: relative;
-           width: 99vw;
-           height: 99vh;
-        }
-        .text4{
-          position: absolute;
-            top:1627px;
-            left: 50%;
-            transform: translateX(-50%);
-            color: black;
-            text-align: center;
-            font-size: 32px;
-            font-family:Arial, Helvetica, sans-serif;
-        }
-            .lo{
-              font-size:16px;
-            }    
-            .parentlu{
-              position: relative;
-           width: 99vw;
-           height: 99vh;
-            } 
-            .text5{
-          position: absolute;
-            top:1871px;
-            left: 50%;
-            transform: translateX(-50%);
-            color: black;
-            text-align: center;
-            font-size: 32px;
-            font-family:Arial, Helvetica, sans-serif;
-        }  
-        .op{
-          font-size:22px;
-          font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-        }  
-        .opl{
-          font-size:16px;
-          font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-        }
-        .par{
-          position: relative;
-           width: 99vw;
-           height: 99vh;
-        }
-        .text6{
-          position: absolute;
-            top:3088px;
-            left: 50%;
-            transform: translateX(-50%);
-            color: white;
-            text-align: center;
-            font-size: 32px;
-            font-family:Arial, Helvetica, sans-serif;
-        } 
-        .po{
-          text-decoration: underline;
-          color:white;
-          font-size: 16px;
-    a{
-        color:white;
+
+    50% {
+        transform: translateY(calc(-50% - 8px));
     }
-        } 
-        .pare{
-          position: relative;
-           width: 99vw;
-           height: 99vh;
-        }
-        .text8
-        {
-          position: absolute;
-            top:3690px;
-            left: 50%;
-            transform: translateX(-50%);
-            color: black;
-            text-align: center;
-            font-size: 32px;
-            font-family:Arial, Helvetica, sans-serif;
-        }
-        .hy{
-        font-size: 15px;
-        color:white;
-    }
-    .part{
-          position: relative;
-           width: 99vw;
-           height: 99vh;       
-    }
-    .text7{
-      position: absolute;
-            top:4294px;
-            left: 48%;
-            transform: translateX(-50%);
-            color: black;
-            text-align: center;
-            font-size: 32px;
-            font-family:Arial, Helvetica, sans-serif;
-    }
- .image4{
-  object-fit: cover;
-  width: 100%;
-  height: 100%;
- }
- .parentlp{
-              position: relative;
-           width: 99vw;
-           height: 99vh;
-            } 
-            .image9{
-  object-fit: cover;
-  width: 100%;
-  height: 100%;
- }  
- .info12{
-    font-size: 15px;
-    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-    color:white;
-} 
-.di{
+}
+
+
+/* =========================================================
+   OTHER PRODUCTS
+========================================================= */
+
+.product-center {
+    align-items: center;
+    text-align: center;
+}
+
+.product-center .hero-bottom {
+    align-items: center;
+}
+
+.product-label {
+    margin-bottom: 14px;
+    font-family: "Space Mono", monospace;
+    font-size: 9px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,.65);
+}
+
+
+/* =========================================================
+   FOOTER / ACCESSORIES
+========================================================= */
+
+.footer-section {
+    position: relative;
+    min-height: 100svh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    scroll-snap-align: start;
+}
+
+.footer-image {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.footer-section::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+        linear-gradient(
+            180deg,
+            rgba(0,0,0,.1),
+            rgba(0,0,0,.8)
+        );
+}
+
+.footer-content {
+    position: relative;
+    z-index: 2;
+    min-height: 100svh;
+    width: min(1000px, calc(100% - 30px));
+    padding: 110px 20px 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.footer-title {
+    font-size: clamp(50px, 7vw, 90px);
+    font-weight: 700;
+    letter-spacing: -5px;
+    text-shadow:
+        0 10px 40px rgba(0,0,0,.5);
+}
+
+.footer-content > .btn {
+    margin-top: 35px;
+}
+
+.footer-links {
+    width: 100%;
+    margin-top: auto;
+    padding-top: 30px;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 8px 22px;
+    color: rgba(255,255,255,.7);
+    font-family: "Space Mono", monospace;
+    font-size: 8px;
+}
+
+.footer-links a:hover {
+    color: #fff;
     text-decoration: underline;
-    color:white;
-    a{
-        color:white;
+}
+
+
+/* =========================================================
+   SCROLL INDICATOR
+========================================================= */
+
+.scroll-indicator {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    z-index: 4;
+    width: 25px;
+    height: 39px;
+    border: 1px solid rgba(255,255,255,.55);
+    border-radius: 20px;
+    transform: translateX(-50%);
+}
+
+.scroll-indicator::after {
+    content: "";
+    position: absolute;
+    top: 7px;
+    left: 50%;
+    width: 3px;
+    height: 7px;
+    border-radius: 10px;
+    background: #fff;
+    transform: translateX(-50%);
+    animation: scrollDot 1.6s infinite;
+}
+
+@keyframes scrollDot {
+    0% {
+        opacity: 0;
+        transform: translate(-50%,0);
     }
- }
- .parentlu{
-              position: relative;
-           width: 99vw;
-           height: 99vh;
-            }
-            .text9{
-          position: absolute;
-            top:2471px;
-            left: 50%;
-            transform: translateX(-50%);
-            color: black;
-            text-align: center;
-            font-size: 32px;
-            font-family:Arial, Helvetica, sans-serif;
-        } 
-        .opi{
-          font-size:16px;
-          font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-        }                     
- #loader {
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  z-index: 1;
-  width: 80px;
-  height: 80px;
-  margin: -76px 0 0 -76px;
-  border: 16px solid #9c9c9c;
-  border-radius: 10%;
-  -webkit-animation: spin 2s linear infinite;
-  animation: spin 2s linear infinite;
+
+    30% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+        transform: translate(-50%,17px);
+    }
 }
-@-webkit-keyframes spin {
-  0% { -webkit-transform: rotate(0deg); }
-  100% { -webkit-transform: rotate(360deg); }
+
+
+/* =========================================================
+   ANIMATIONS
+========================================================= */
+
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(25px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
-@keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 950px) {
+
+    .navbar {
+        padding: 0 22px;
+    }
+
+    .nav-links {
+        display: none;
+    }
+
+    .menu-btn {
+        display: grid;
+    }
+
+    .desktop-only {
+        display: none;
+    }
+
+    .performance-badge {
+        width: 100px;
+        height: 100px;
+        right: 20px;
+    }
+
+    .performance-badge strong {
+        font-size: 22px;
+    }
+
+    .spec {
+        min-width: 105px;
+    }
 }
-.animate-bottom {
-  position: relative;
-  -webkit-animation-name: animatebottom;
-  -webkit-animation-duration: 1s;
-  animation-name: animatebottom;
-  animation-duration: 1s;
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 700px) {
+
+    html {
+        scroll-snap-type: none;
+    }
+
+    .navbar {
+        height: 62px;
+        padding: 0 15px;
+    }
+
+    .brand {
+        width: 88px;
+    }
+
+    .hero {
+        min-height: 100svh;
+    }
+
+    .hero-content {
+        width: calc(100% - 25px);
+        padding-top: 100px;
+        padding-bottom: 28px;
+    }
+
+    .hero-image {
+        object-position: center;
+    }
+
+    .hero-title {
+        font-size: clamp(45px, 14vw, 65px);
+        letter-spacing: -3px;
+    }
+
+    .hero-subtitle {
+        font-size: 14px;
+    }
+
+    .hero-small {
+        font-size: 9px;
+    }
+
+    .model-y-content {
+        align-items: center;
+        text-align: center;
+    }
+
+    .model-y-copy {
+        max-width: 100%;
+    }
+
+    .model-y-title {
+        font-size: clamp(60px, 20vw, 90px);
+        letter-spacing: -5px;
+    }
+
+    .model-y-tagline {
+        font-size: 18px;
+    }
+
+    .model-y-description {
+        max-width: 340px;
+        font-size: 11px;
+    }
+
+    .specs {
+        width: 100%;
+        max-width: 370px;
+        justify-content: center;
+    }
+
+    .spec {
+        flex: 1;
+        min-width: 0;
+        padding: 12px 5px;
+    }
+
+    .spec-value {
+        font-size: 14px;
+    }
+
+    .spec-label {
+        font-size: 6px;
+        letter-spacing: .5px;
+    }
+
+    .performance-badge {
+        display: none;
+    }
+
+    .hero-bottom,
+    .model-y-content .hero-bottom {
+        align-items: center;
+    }
+
+    .buttons {
+        width: 100%;
+        flex-direction: column;
+        align-items: center;
+        gap: 9px;
+    }
+
+    .btn {
+        width: min(100%, 350px);
+        min-height: 46px;
+    }
+
+    .disclaimer {
+        max-width: 330px;
+        font-size: 7px;
+    }
+
+    .scroll-indicator {
+        display: none;
+    }
+
+    .footer-title {
+        font-size: 55px;
+        letter-spacing: -4px;
+    }
+
+    .footer-links {
+        font-size: 7px;
+        gap: 8px 12px;
+    }
 }
-@-webkit-keyframes animatebottom {
-  from { bottom:-100px; opacity:0 } 
-  to { bottom:0px; opacity:1 }
+
+
+/* =========================================================
+   SMALL PHONES
+========================================================= */
+
+@media (max-width: 380px) {
+
+    .hero-content {
+        width: calc(100% - 18px);
+        padding-top: 90px;
+    }
+
+    .model-y-title {
+        font-size: 55px;
+    }
+
+    .model-y-tagline {
+        font-size: 16px;
+    }
+
+    .spec-value {
+        font-size: 12px;
+    }
+
+    .btn {
+        font-size: 12px;
+        min-height: 44px;
+    }
 }
-@keyframes animatebottom { 
-  from{ bottom:-100px; opacity:0 } 
-  to{ bottom:0; opacity:1 }
+
+
+/* =========================================================
+   REDUCED MOTION
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    html {
+        scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+        animation-duration: .01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: .01ms !important;
+    }
 }
-#myDiv {
-  display: none;
-  text-align: center;
-}
-img:hover {
-  opacity: 0.5;
-}
-button:hover {
-  background-color: rgb(156, 156, 156);
-  color: white;
-}
-::-webkit-scrollbar {
-  width: 10px;
-}
-::-webkit-scrollbar-track {
-  background: #f1f1f1; 
-}
-::-webkit-scrollbar-thumb {
-  background: #888; 
-}
-::-webkit-scrollbar-thumb:hover {
-  background: #555; 
-}
-        a {
-color: black;
-text-decoration: none;
-background-image: linear-gradient(black,black);
-background-size: 0% 0.1em;
-background-position-y: 100%;
-background-position-x: 0%;
-background-repeat: no-repeat;
-transition: background-size 0.2s ease-in-out;
-}
-a:hover,
-a:focus,
-a:active {
-background-size: 100% 0.1em;
-}
+
 </style>
 </head>
-<body  onload="myFunction()" style="margin:0;">
-  <div id="loader"></div>
-  <div style="display:none;" id="myDiv" class="animate-bottom">
-   <div class="parent">
-        <img class="image1" src="https://static1.topspeedimages.com/wordpress/wp-content/uploads/2024/01/tesla-model-y-10.jpg" alt="Tesla Y">
-        <a href="index.html"><img class="image2" src="https://indigo-officalwebsite.oss-cn-beijing.aliyuncs.com/uat/img_shop_tesla_cdda5f5a1d.png" alt="Tesla Logo" height="202" width="202"></a>
-        <header>
-            <div class="text1">
-                <label class="lo">
-                <b><font color="grey"><small><label class="lo"><a href="index.html">Vehicles</a>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<a href="index.html">Energy</a>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<a href="index.html">Charging</a>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<a href="index.html">Discover</a>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<a href="index.html">Shop</a></label></small></font></b>
+
+
+<body>
+
+
+<!-- =========================================================
+     LOADER
+========================================================= -->
+
+<div id="loader">
+    <div class="loader-box">
+
+        <!-- Tesla T + Tesla Wordmark -->
+        <img
+            class="loader-logo"
+            src="https://i.pinimg.com/originals/b9/44/9a/b9449a72d36fde245b681be76d60c927.png"
+            alt="Tesla"
+        >
+
+        <div class="loader-line"></div>
+
+        <div class="loader-text">
+            SYSTEM INITIALIZING
+        </div>
+
+    </div>
+</div>
+
+
+<!-- =========================================================
+     NAVIGATION
+========================================================= -->
+
+<header class="navbar" id="navbar">
+
+    <a
+        class="brand"
+        href="#model-y"
+        aria-label="Tesla home"
+    >
+        <img
+            src="https://indigo-officalwebsite.oss-cn-beijing.aliyuncs.com/uat/img_shop_tesla_cdda5f5a1d.png"
+            alt="Tesla"
+        >
+    </a>
+
+
+    <nav class="nav-links">
+
+        <a href="#model-y">Vehicles</a>
+        <a href="#solar-roof">Energy</a>
+        <a href="#powerwall">Charging</a>
+        <a href="#model-s">Discover</a>
+        <a href="#accessories">Shop</a>
+
+    </nav>
+
+
+    <div class="nav-actions">
+
+        <button
+            class="icon-btn"
+            id="languageBtn"
+            type="button"
+            aria-label="Language"
+        >
+            A
+        </button>
+
+
+        <!-- SUPPORT: SAME ICON, NO LINK -->
+
+        <button
+            class="icon-btn desktop-only"
+            type="button"
+            aria-label="Support"
+        >
+
+            <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.8"
+            >
+
+                <circle cx="12" cy="12" r="9"/>
+
+                <path
+                    d="M9.5 9a2.5 2.5 0 1 1 4.1 1.9c-.9.7-1.6 1.1-1.6 2.3"
+                />
+
+                <circle
+                    cx="12"
+                    cy="16.5"
+                    r=".6"
+                    fill="currentColor"
+                />
+
+            </svg>
+
+        </button>
+
+
+        <!-- ACCOUNT: SAME ICON, NO LINK/ACTION -->
+
+        <button
+            class="icon-btn desktop-only"
+            id="accountBtn"
+            type="button"
+            aria-label="Account"
+        >
+
+            <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.8"
+            >
+
+                <circle cx="12" cy="8" r="3.5"/>
+
+                <path
+                    d="M5 20c.8-3.4 3.2-5.2 7-5.2s6.2 1.8 7 5.2"
+                />
+
+            </svg>
+
+        </button>
+
+
+        <button
+            class="icon-btn menu-btn"
+            id="menuBtn"
+            type="button"
+            aria-label="Open menu"
+            aria-expanded="false"
+        >
+
+            <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+            >
+
+                <path d="M4 7h16"/>
+                <path d="M4 12h16"/>
+                <path d="M4 17h16"/>
+
+            </svg>
+
+        </button>
+
+    </div>
+
+</header>
+
+
+<!-- =========================================================
+     MOBILE MENU
+========================================================= -->
+
+<nav class="mobile-menu" id="mobileMenu">
+
+    <a href="#model-y">Model Y</a>
+    <a href="#model-3">Model 3</a>
+    <a href="#cybertruck">Cybertruck</a>
+    <a href="#model-s">Model S</a>
+    <a href="#solar-roof">Solar Roof</a>
+    <a href="#solar-panels">Solar Panels</a>
+    <a href="#powerwall">Powerwall</a>
+    <a href="#accessories">Accessories</a>
+
+    <div class="mobile-menu-footer">
+        TESLA-INSPIRED FRONTEND PROJECT<br>
+        HTML5 • CSS3 • JAVASCRIPT<br>
+        RESPONSIVE • INTERACTIVE • MODERN
+    </div>
+
+</nav>
+
+
+<!-- =========================================================
+     MAIN
+========================================================= -->
+
+<main>
+
+
+<!-- =========================================================
+     MODEL Y
+========================================================= -->
+
+<section
+    class="hero active"
+    id="model-y"
+    data-theme="dark"
+>
+
+    <img
+        class="hero-image"
+        src="https://static1.topspeedimages.com/wordpress/wp-content/uploads/2024/01/tesla-model-y-10.jpg"
+        alt="Tesla Model Y"
+        loading="eager"
+    >
+
+
+    <div class="hero-content model-y-content light-text">
+
+        <div class="model-y-copy">
+
+            <div class="eyebrow">
+                THE FUTURE IS HERE
             </div>
-            <div class="question-mark">
-            <div class="dropdown">
-               <button class="dropbtn"><img src="data:image/png;base64,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" width="23" height="23"></button>
-              <div class="dropdown-content">
-                <a href="#">English(US)</a>
-                <a href="#">English(UK)</a>
-                <a href="#">Italy</a>
-                <a href="#">French</a>
-              </div>
-            </div>&nbsp&nbsp&nbsp
-            <a href="https://www.tesla.com/support"><img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fassets.stickpng.com%2Fimages%2F5a4613abd099a2ad03f9c992.png&f=1&nofb=1&ipt=d8528146be11361f79e28ddcfa30d9d9fd414323265280b4d88707ccf21ecdca&ipo=images" height="24" width="24"></a>&nbsp&nbsp&nbsp
-            <a href="account.html"><img src="https://static.vecteezy.com/system/resources/previews/021/079/672/original/user-account-icon-for-your-design-only-free-png.png" height ="26" width="26"></a>&nbsp&nbsp&nbsp
+
+            <h1 class="model-y-title">
+                Model Y
+            </h1>
+
+            <p class="model-y-tagline">
+                Electric performance. Reinvented.
+            </p>
+
+            <p class="model-y-description">
+                Experience an intelligent electric SUV engineered
+                for everyday freedom — combining long-range efficiency,
+                instant acceleration and a minimalist driving experience.
+            </p>
+
+
+            <div class="specs">
+
+                <div class="spec">
+                    <span class="spec-value">330+</span>
+                    <span class="spec-label">MILES RANGE</span>
                 </div>
-         </header>
+
+                <div class="spec">
+                    <span class="spec-value">3.5s</span>
+                    <span class="spec-label">0–60 MPH</span>
+                </div>
+
+                <div class="spec">
+                    <span class="spec-value">AWD</span>
+                    <span class="spec-label">DUAL MOTOR</span>
+                </div>
+
+                <div class="spec">
+                    <span class="spec-value">5</span>
+                    <span class="spec-label">SEATS</span>
+                </div>
+
             </div>
-    <div class="text2">
-         <label><font color="white"><big>Model&nbspY</big></font></label><br>
-         <label class="price-label"><font color="white">From $29,490<subscript>*</subscript></font></label><br>
-         <label class="te"><font color="white">After Federal Tax Credit & Est. Gas Savings</font></label><br><br><br><br><br><br>
-         <button class="button1" style="vertical-align:left1"><span><b>Order Now</b></span></button>&nbsp
-         <button class="button2" style="vertical-align:left2"><span><b>Demo Drive</b></span></button><br>
-         <label class="info">*Price before incentives is $42,990, excluding taxes and fees.Subject to change.<br>
-        <label class="dash"><a href="index.html">Learn about est.Gas savings.</a></label>
-        </label><br>
+
+        </div>
+
+
+        <div class="performance-badge">
+
+            <strong>EV</strong>
+
+            <span>
+                ZERO<br>
+                EMISSIONS
+            </span>
+
+        </div>
+
+
+        <div class="hero-bottom">
+
+            <div class="buttons">
+
+                <a
+                    class="btn btn-light"
+                    href="#blank"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    Order Model Y
+                </a>
+
+                <a
+                    class="btn btn-dark"
+                    href="#blank"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    Schedule Demo Drive
+                </a>
+
+            </div>
+
+
+            <p class="disclaimer">
+                Explore Model Y pricing, configurations and available incentives.
+                Specifications and availability may vary by market.
+            </p>
+
+        </div>
+
     </div>
-    <div class="parenty">
-    <img class="image4" src="https://digitalassets.tesla.com/tesla-contents/image/upload/f_auto,q_auto/Homepage-Model-3-Desktop-LHD-v2.jpg" alt="Tesla Model 3" >
+
+
+    <div class="scroll-indicator"></div>
+
+</section>
+
+
+<!-- =========================================================
+     MODEL 3
+========================================================= -->
+
+<section
+    class="hero"
+    id="model-3"
+    data-theme="dark"
+>
+
+    <img
+        class="hero-image"
+        src="https://digitalassets.tesla.com/tesla-contents/image/upload/f_auto,q_auto/Homepage-Model-3-Desktop-LHD-v2.jpg"
+        alt="Tesla Model 3"
+        loading="lazy"
+    >
+
+
+    <div class="hero-content product-center light-text">
+
+        <div class="eyebrow">
+            PURE ELECTRIC PERFORMANCE
+        </div>
+
+        <h2 class="hero-title">
+            Model 3
+        </h2>
+
+        <p class="hero-subtitle">
+            Performance without compromise.
+        </p>
+
+        <p class="hero-small">
+            Fast. Efficient. Intelligent.
+        </p>
+
+
+        <div class="hero-bottom">
+
+            <div class="buttons">
+
+                <a
+                    class="btn btn-light"
+                    href="#blank"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    Order Model 3
+                </a>
+
+                <a
+                    class="btn btn-dark"
+                    href="#blank"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    Demo Drive
+                </a>
+
+            </div>
+
+
+            <p class="disclaimer">
+
+                Discover available Model 3 configurations and pricing.
+
+                <a
+                    href="#blank"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    Explore Model 3
+                </a>
+
+            </p>
+
+        </div>
+
     </div>
-   <div class="text3">
-             <label><big><font color="black">Model&nbsp3</font></big></label><br>
-             <label class="ji"><font color="black">From $299/mo<subcipt>*</subcipt></font></label><br>
-             <label class="li"><font color="black">Est. Lease Price Before Gas Savings</font></label><br><br><br><br><br><br><br><br>
-             <button class="button1" style="vertical-align:left1"><span><b>Order Now</b></span></button>&nbsp
-             <button class="button2" style="vertical-align:left2"><span><b>Demo Drive</b></span></button><br>
-             <label class="info1">*Excludes taxes and fees with price subject to change.Available in select states.<br>
-            <label class="da"><a href="index.html">See Details</a></label>
-          </label><br>
+
+</section>
+
+
+<!-- =========================================================
+     CYBERTRUCK
+========================================================= -->
+
+<section
+    class="hero"
+    id="cybertruck"
+    data-theme="dark"
+>
+
+    <img
+        class="hero-image"
+        src="https://miro.medium.com/v2/resize:fit:1400/1*teYzZalO8XcaPh6kTAI7NQ.png"
+        alt="Tesla Cybertruck"
+        loading="lazy"
+    >
+
+
+    <div class="hero-content product-center light-text">
+
+        <div class="eyebrow">
+            BUILT DIFFERENT
+        </div>
+
+        <h2 class="hero-title">
+            Cybertruck
+        </h2>
+
+        <p class="hero-subtitle">
+            Tough enough for work. Fast enough for anywhere.
+        </p>
+
+
+        <div class="hero-bottom">
+
+            <div class="buttons">
+
+                <a
+                    class="btn btn-light"
+                    href="#blank"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    Order Cybertruck
+                </a>
+
+                <a
+                    class="btn btn-dark"
+                    href="#blankk"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    Explore Cybertruck
+                </a>
+
+            </div>
+
+        </div>
+
     </div>
-    <div class="parentu">
-     <div class="image8"><img src="https://miro.medium.com/v2/resize:fit:1400/1*teYzZalO8XcaPh6kTAI7NQ.png"  alt="CyberTruck" style="width:100%; height:100%;"></div>
+
+</section>
+
+
+<!-- =========================================================
+     MODEL S
+========================================================= -->
+
+<section
+    class="hero"
+    id="model-s"
+    data-theme="dark"
+>
+
+    <img
+        class="hero-image"
+        src="https://digitalassets.tesla.com/tesla-contents/image/upload/f_auto,q_auto/Homepage-Model-S-Desktop-v2.jpg"
+        alt="Tesla Model S"
+        loading="lazy"
+    >
+
+
+    <div class="hero-content product-center light-text">
+
+        <div class="eyebrow">
+            LUXURY • TECHNOLOGY • PERFORMANCE
+        </div>
+
+        <h2 class="hero-title">
+            Model S
+        </h2>
+
+        <p class="hero-subtitle">
+            Uncompromising electric performance.
+        </p>
+
+        <p class="hero-small">
+            Designed for speed. Built for distance.
+        </p>
+
+
+        <div class="hero-bottom">
+
+            <div class="buttons">
+
+                <a
+                    class="btn btn-light"
+                    href="#blank"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    Order Model S
+                </a>
+
+                <a
+                    class="btn btn-dark"
+                    href="#blank"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    Explore Model S
+                </a>
+
+            </div>
+
+
+            <p class="disclaimer">
+                Explore current Model S configurations and specifications.
+            </p>
+
+        </div>
+
     </div>
-    <div class="text4">
-             <button class="button1" style="vertical-align:left2"><span><b>Order Now</b></span></button>&nbsp
-             <button class="button2" style="vertical-align:left2"><span><b>Learn More</b></span></button>
-                </div>
-    <div class="parentlp">
-      <img class="image9" src="https://digitalassets.tesla.com/tesla-contents/image/upload/f_auto,q_auto/Homepage-Model-S-Desktop-v2.jpg" alt="Tesla S">
-    </div>  
-    <div class="text5">
-      <label><big><font color="white">Tesla&nbspS</font></big></label><br>
-      <label class="op"><font color="white">From $66,490*</font></label><br>
-      <label class="opl"><font color="white">After Est. Savings</font></label><br><br><br><br><br><br><br><br>
-      <button class="button1" style="vertical-align:left1"><span><b>Order Now</b></span></button>&nbsp
-      <button class="button2" style="vertical-align:left2"><span><b>Learn More</b></span></button><br>
-      <label class="info12">Price before estimated savings is $72,990, excluding taxes and fees. Subject to change.<br>
-      <label class="di"><a href="index.html">See Details</a></label>
-      </label><br>
-    </div>          
-    <div class="parentlu">
-      <img src="https://www.slashgear.com/img/gallery/tesla-solar-roof-vs-tesla-solar-panels-whats-the-difference/l-intro-1671204746.jpg" alt="Solar Roof" style="width:100%; height:100%;">
+
+</section>
+
+
+<!-- =========================================================
+     SOLAR ROOF
+========================================================= -->
+
+<section
+    class="hero"
+    id="solar-roof"
+    data-theme="dark"
+>
+
+    <img
+        class="hero-image"
+        src="https://www.slashgear.com/img/gallery/tesla-solar-roof-vs-tesla-solar-panels-whats-the-difference/l-intro-1671204746.jpg"
+        alt="Tesla Solar Roof"
+        loading="lazy"
+    >
+
+
+    <div class="hero-content product-center light-text">
+
+        <div class="eyebrow">
+            ENERGY FOR THE FUTURE
+        </div>
+
+        <h2 class="hero-title">
+            Solar Roof
+        </h2>
+
+        <p class="hero-subtitle">
+            Beautiful energy. Built into your roof.
+        </p>
+
+
+        <div class="hero-bottom">
+
+            <div class="buttons">
+
+                <a
+                    class="btn btn-light"
+                    href="#blank"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    Design Your Solar Roof
+                </a>
+
+                <a
+                    class="btn btn-dark"
+                    href="#blank"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    Learn More
+                </a>
+
+            </div>
+
+        </div>
+
     </div>
-    <div class="text9">
-      <label><big>Solar&nbspRoof</big></label><br>
-      <label class="opi">Produce Clean Energy From Your Roof</label><br><br><br><br><br><br><br>
-      <button class="button1" style="vertical-align:left1"><span><b>Order Now</b></span></button>&nbsp
-      <button class="button2" style="vertical-align:left2"><span><b>Learn More</b></span></button>
+
+</section>
+
+
+<!-- =========================================================
+     SOLAR PANELS
+========================================================= -->
+
+<section
+    class="hero"
+    id="solar-panels"
+    data-theme="dark"
+>
+
+    <img
+        class="hero-image"
+        src="https://digitalassets.tesla.com/tesla-contents/image/upload/f_auto,q_auto/Homepage-SolarPanels-01-Desktop"
+        alt="Tesla Solar Panels"
+        loading="lazy"
+    >
+
+
+    <div class="hero-content product-center light-text">
+
+        <div class="eyebrow">
+            CLEAN ENERGY
+        </div>
+
+        <h2 class="hero-title">
+            Solar Panels
+        </h2>
+
+        <p class="hero-subtitle">
+            Turn sunlight into clean, renewable power.
+        </p>
+
+
+        <div class="hero-bottom">
+
+            <div class="buttons">
+
+                <a
+                    class="btn btn-light"
+                    href="#blank"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    Explore Solar Panels
+                </a>
+
+                <a
+                    class="btn btn-dark"
+                    href="#blank"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    Schedule Consultation
+                </a>
+
+            </div>
+
+        </div>
+
     </div>
-    <div class="par">
-      <img src="https://digitalassets.tesla.com/tesla-contents/image/upload/f_auto,q_auto/Homepage-SolarPanels-01-Desktop" alt="Solar Panel" style="width:100%; height:100%;">
+
+</section>
+
+
+<!-- =========================================================
+     POWERWALL
+========================================================= -->
+
+<section
+    class="hero"
+    id="powerwall"
+    data-theme="dark"
+>
+
+    <img
+        class="hero-image"
+        src="https://cdn.motor1.com/images/mgl/oRroy/s1/tesla-powerwall-home-energy-storage-system.jpg"
+        alt="Tesla Powerwall"
+        loading="lazy"
+    >
+
+
+    <div class="hero-content product-center light-text">
+
+        <div class="eyebrow">
+            ENERGY STORAGE
+        </div>
+
+        <h2 class="hero-title">
+            Powerwall
+        </h2>
+
+        <p class="hero-subtitle">
+            Your home. Your energy. Your independence.
+        </p>
+
+
+        <div class="hero-bottom">
+
+            <div class="buttons">
+
+                <a
+                    class="btn btn-light"
+                    href="#blank"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    Explore Powerwall
+                </a>
+
+                <a
+                    class="btn btn-dark"
+                    href="#blank"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    Learn More
+                </a>
+
+            </div>
+
+        </div>
+
     </div>
-    <div class="text6">
-      <label><big>Solar&nbspPanels</big></label><br>
-      <label class="po"><a href="index.html">Schedule a Virtual Consultation</a></label><br><br><br><br><br><br><br><br><br>
-      <button class="button1" style="vertical-align:left1"><span><b>Order Now</b></span></button>&nbsp
-      <button class="button2" style="vertical-align:left2"><span><b>Learn More</b></span></button>
+
+</section>
+
+
+<!-- =========================================================
+     ACCESSORIES
+========================================================= -->
+
+<section
+    class="footer-section"
+    id="accessories"
+>
+
+    <img
+        class="footer-image"
+        src="https://digitalassets.tesla.com/tesla-contents/image/upload/f_auto,q_auto/Homepage-Accessories-Desktop-NA-APAC.jpg"
+        alt="Tesla Accessories"
+        loading="lazy"
+    >
+
+
+    <div class="footer-content">
+
+        <div class="eyebrow">
+            COMPLETE THE EXPERIENCE
+        </div>
+
+        <h2 class="footer-title">
+            Accessories
+        </h2>
+
+
+        <a
+            class="btn btn-light"
+            href="#blank"
+            target="_blank"
+            rel="noopener noreferrer"
+        >
+            Shop Tesla
+        </a>
+
+
+        <div class="footer-links">
+
+            <span>
+                Tesla-Inspired Frontend Project
+            </span>
+
+            <a
+                href="#blank"
+                target="_blank"
+                rel="noopener noreferrer"
+            >
+                Privacy & Legal
+            </a>
+
+            <a
+                href="#blank"
+                target="_blank"
+                rel="noopener noreferrer"
+            >
+                Contact
+            </a>
+
+            <a
+                href="#blank"
+                target="_blank"
+                rel="noopener noreferrer"
+            >
+                Support
+            </a>
+
+        </div>
+
     </div>
-    <div class="part">
-      <img src="https://cdn.motor1.com/images/mgl/oRroy/s1/tesla-powerwall-home-energy-storage-system.jpg" alt="Accessories" style="width:100%; height:100%;">
-    </div>
-    <div class="text8">
-      <label><big>Powerwall</big></label><br><br><br><br><br><br><br><br><br>
-      <button class="button1" style="vertical-align:left1"><span><b>Order Now</b></span></button>&nbsp
-        <button class="button2" style="vertical-align:left2"><span><b>Learn More</b></span></button>
-     </div>
-   <div class="pare">
-    <img src="https://digitalassets.tesla.com/tesla-contents/image/upload/f_auto,q_auto/Homepage-Accessories-Desktop-NA-APAC.jpg"  alt="Accessories" style="width:100%; height:100%;">
-   </div>
-   <div class="text7">
-    <label><big>Accessories</big></label><br><br><br><br><br><br><br><br><br><br>
-    <button class="button2" style="vertical-align:left2"><span><b>Shop Now</b></span></button><br><br>
-    <label class="hy"><center><footer>Tesla © 2024&nbsp&nbsp&nbspPrivacy & Legal<Subscript>*</Subscript>&nbsp&nbsp&nbspVehicle Recalls&nbsp&nbsp&nbspContact&nbsp&nbsp&nbspNews&nbsp&nbsp&nbspGet Updates&nbsp&nbsp&nbspLocation&nbsp&nbsp&nbsp</footer></center></label>
-     </div>
-     </div>
-    <script>
-      var myVar;
-      function myFunction() {
-        myVar = setTimeout(showPage, 3000);
-      }
-      function showPage() {
-        document.getElementById("loader").style.display = "none";
-        document.getElementById("myDiv").style.display = "block";
-      }
-      </script>
-    </body>
+
+</section>
+
+</main>
+
+
+<!-- =========================================================
+     JAVASCRIPT
+========================================================= -->
+
+<script>
+
+/* =========================================================
+   LOADER
+========================================================= */
+
+const loader = document.getElementById("loader");
+
+window.addEventListener("load", () => {
+
+    setTimeout(() => {
+
+        loader.classList.add("hidden");
+
+    }, 650);
+
+});
+
+
+/* =========================================================
+   NAVBAR
+========================================================= */
+
+const navbar = document.getElementById("navbar");
+
+function updateNavbar() {
+
+    if (window.scrollY > 40) {
+
+        navbar.classList.add("scrolled");
+
+    } else {
+
+        navbar.classList.remove("scrolled");
+
+    }
+
+}
+
+window.addEventListener(
+    "scroll",
+    updateNavbar,
+    { passive: true }
+);
+
+updateNavbar();
+
+
+/* =========================================================
+   MOBILE MENU
+========================================================= */
+
+const menuBtn =
+    document.getElementById("menuBtn");
+
+const mobileMenu =
+    document.getElementById("mobileMenu");
+
+
+function closeMenu() {
+
+    mobileMenu.classList.remove("open");
+
+    document.body.classList.remove("menu-open");
+
+    menuBtn.setAttribute(
+        "aria-expanded",
+        "false"
+    );
+
+    menuBtn.setAttribute(
+        "aria-label",
+        "Open menu"
+    );
+
+}
+
+
+menuBtn.addEventListener("click", () => {
+
+    const opened =
+        mobileMenu.classList.toggle("open");
+
+    document.body.classList.toggle(
+        "menu-open",
+        opened
+    );
+
+    menuBtn.setAttribute(
+        "aria-expanded",
+        opened
+    );
+
+    menuBtn.setAttribute(
+        "aria-label",
+        opened
+            ? "Close menu"
+            : "Open menu"
+    );
+
+});
+
+
+document
+    .querySelectorAll(".mobile-menu a")
+    .forEach(link => {
+
+        link.addEventListener(
+            "click",
+            closeMenu
+        );
+
+    });
+
+
+document.addEventListener(
+    "keydown",
+    event => {
+
+        if (event.key === "Escape") {
+
+            closeMenu();
+
+        }
+
+    }
+);
+
+
+/* =========================================================
+   LANGUAGE BUTTON
+========================================================= */
+
+const languageBtn =
+    document.getElementById("languageBtn");
+
+
+languageBtn.addEventListener(
+    "click",
+    () => {
+
+        const languages = [
+            "English",
+            "Deutsch",
+            "Français",
+            "Italiano",
+            "Español"
+        ];
+
+        const current =
+            languageBtn.dataset.language ||
+            "English";
+
+        const index =
+            languages.indexOf(current);
+
+        const next =
+            languages[
+                (index + 1) % languages.length
+            ];
+
+        languageBtn.dataset.language =
+            next;
+
+        languageBtn.title =
+            "Language: " + next;
+
+        languageBtn.textContent =
+            next === "English"
+                ? "A"
+                : next.substring(0,1);
+
+    }
+);
+
+
+/* =========================================================
+   ACCOUNT
+========================================================= */
+
+/*
+   Account link/action removed.
+
+   The account button remains visually
+   identical but performs no external action.
+*/
+
+
+/* =========================================================
+   ACTIVE HERO ANIMATION
+========================================================= */
+
+const heroes =
+    document.querySelectorAll(
+        ".hero"
+    );
+
+
+const observer =
+    new IntersectionObserver(
+        entries => {
+
+            entries.forEach(entry => {
+
+                if (entry.isIntersecting) {
+
+                    entry.target.classList.add(
+                        "active"
+                    );
+
+                }
+
+            });
+
+        },
+        {
+            threshold: .35
+        }
+    );
+
+
+heroes.forEach(hero => {
+
+    observer.observe(hero);
+
+});
+
+
+/* =========================================================
+   IMAGE FALLBACK
+========================================================= */
+
+document
+    .querySelectorAll("img")
+    .forEach(img => {
+
+        img.addEventListener(
+            "error",
+            () => {
+
+                img.style.background =
+                    "linear-gradient(135deg,#111,#292929)";
+
+                img.alt =
+                    "Image unavailable";
+
+            }
+        );
+
+    });
+
+
+/* =========================================================
+   KEYBOARD HOME
+========================================================= */
+
+document.addEventListener(
+    "keydown",
+    event => {
+
+        if (
+            event.key === "Home" &&
+            !event.target.matches(
+                "input,textarea"
+            )
+        ) {
+
+            window.scrollTo({
+                top: 0,
+                behavior: "smooth"
+            });
+
+        }
+
+    }
+);
+
+
+/* =========================================================
+   BUTTON RIPPLE EFFECT
+========================================================= */
+
+document
+    .querySelectorAll(".btn")
+    .forEach(button => {
+
+        button.addEventListener(
+            "click",
+            () => {
+
+                button.style.transform =
+                    "scale(.97)";
+
+                setTimeout(() => {
+
+                    button.style.transform =
+                        "";
+
+                }, 130);
+
+            }
+        );
+
+    });
+
+</script>
+
+</body>
 </html>
