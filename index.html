@@ -3,8 +3,8 @@
 
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Tesla-inspired responsive frontend development project.">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="description" content="Tesla-inspired futuristic responsive frontend development project.">
 <meta name="theme-color" content="#050505">
 <title>Tesla | Electric Performance</title>
 
@@ -58,6 +58,56 @@ img {
 
 
 /* =========================================================
+   FUTURISTIC VARIABLES
+========================================================= */
+
+:root {
+    --glass: rgba(8, 8, 10, .58);
+    --glass-heavy: rgba(8, 8, 10, .88);
+    --line: rgba(255,255,255,.14);
+    --line-bright: rgba(255,255,255,.28);
+    --text-dim: rgba(255,255,255,.62);
+    --cyan: #7ee8ff;
+    --blue: #4abfff;
+}
+
+
+/* =========================================================
+   FUTURISTIC BACKGROUND EFFECT
+========================================================= */
+
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: 9998;
+    pointer-events: none;
+    opacity: .035;
+    background:
+        repeating-linear-gradient(
+            0deg,
+            transparent 0,
+            transparent 3px,
+            #fff 4px
+        );
+}
+
+body::after {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: 9997;
+    pointer-events: none;
+    background:
+        radial-gradient(
+            circle at 50% 0%,
+            rgba(80,200,255,.045),
+            transparent 35%
+        );
+}
+
+
+/* =========================================================
    LOADER
 ========================================================= */
 
@@ -68,7 +118,13 @@ img {
     display: flex;
     align-items: center;
     justify-content: center;
-    background: #050505;
+    background:
+        radial-gradient(
+            circle at center,
+            #101419 0%,
+            #050505 55%,
+            #000 100%
+        );
     transition:
         opacity .7s ease,
         visibility .7s ease;
@@ -81,11 +137,10 @@ img {
 }
 
 .loader-box {
-    width: 220px;
+    width: min(220px, 70vw);
     text-align: center;
 }
 
-/* Tesla T + Tesla Wordmark */
 .loader-logo {
     width: 150px;
     height: auto;
@@ -97,8 +152,9 @@ img {
 .loader-line {
     width: 100%;
     height: 2px;
-    background: rgba(255,255,255,.15);
+    background: rgba(255,255,255,.12);
     overflow: hidden;
+    box-shadow: 0 0 15px rgba(255,255,255,.08);
 }
 
 .loader-line::after {
@@ -107,6 +163,9 @@ img {
     width: 35%;
     height: 100%;
     background: #fff;
+    box-shadow:
+        0 0 10px #fff,
+        0 0 25px rgba(120,220,255,.8);
     animation: loaderMove 1.2s infinite ease-in-out;
 }
 
@@ -152,23 +211,45 @@ img {
     justify-content: space-between;
     z-index: 5000;
     color: #fff;
+    border-bottom: 1px solid transparent;
     transition:
         background .35s ease,
         backdrop-filter .35s ease,
-        box-shadow .35s ease;
+        box-shadow .35s ease,
+        border-color .35s ease;
 }
 
 .navbar.scrolled {
     background: rgba(0,0,0,.55);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    border-bottom-color: rgba(255,255,255,.08);
     box-shadow:
-        0 5px 30px rgba(0,0,0,.15);
+        0 5px 35px rgba(0,0,0,.35);
 }
 
 .brand {
     width: 110px;
     flex-shrink: 0;
+    position: relative;
+}
+
+.brand::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -7px;
+    width: 25px;
+    height: 1px;
+    background: var(--cyan);
+    box-shadow: 0 0 10px var(--cyan);
+    opacity: 0;
+    transition: opacity .3s ease, width .3s ease;
+}
+
+.brand:hover::after {
+    opacity: 1;
+    width: 55px;
 }
 
 .brand img {
@@ -186,18 +267,39 @@ img {
 }
 
 .nav-links a {
+    position: relative;
     padding: 10px 14px;
     border-radius: 8px;
     font-size: 13px;
     font-weight: 600;
     transition:
         background .25s ease,
-        transform .25s ease;
+        transform .25s ease,
+        color .25s ease;
+}
+
+.nav-links a::after {
+    content: "";
+    position: absolute;
+    left: 14px;
+    right: 14px;
+    bottom: 4px;
+    height: 1px;
+    background: var(--cyan);
+    transform: scaleX(0);
+    transform-origin: center;
+    transition: transform .25s ease;
+    box-shadow: 0 0 8px var(--cyan);
 }
 
 .nav-links a:hover {
-    background: rgba(255,255,255,.12);
+    background: rgba(255,255,255,.08);
+    color: #fff;
     transform: translateY(-1px);
+}
+
+.nav-links a:hover::after {
+    transform: scaleX(1);
 }
 
 .nav-actions {
@@ -209,21 +311,26 @@ img {
 .icon-btn {
     width: 38px;
     height: 38px;
-    border: 0;
+    border: 1px solid rgba(255,255,255,.08);
     border-radius: 50%;
     display: grid;
     place-items: center;
-    background: rgba(255,255,255,.12);
+    background: rgba(255,255,255,.08);
     color: inherit;
     cursor: pointer;
     transition:
         transform .25s ease,
-        background .25s ease;
+        background .25s ease,
+        border-color .25s ease,
+        box-shadow .25s ease;
 }
 
 .icon-btn:hover {
     transform: scale(1.08);
-    background: rgba(255,255,255,.22);
+    background: rgba(255,255,255,.17);
+    border-color: rgba(126,232,255,.4);
+    box-shadow:
+        0 0 20px rgba(126,232,255,.12);
 }
 
 .icon-btn svg {
@@ -244,13 +351,79 @@ img {
     position: fixed;
     inset: 0;
     z-index: 4500;
-    padding: 100px 28px 30px;
+
+    padding:
+        calc(85px + env(safe-area-inset-top))
+        28px
+        calc(30px + env(safe-area-inset-bottom));
+
     display: flex;
     flex-direction: column;
-    background: rgba(8,8,8,.96);
-    backdrop-filter: blur(25px);
+
+    background:
+        radial-gradient(
+            circle at 90% 10%,
+            rgba(80,200,255,.09),
+            transparent 30%
+        ),
+        rgba(5,7,9,.97);
+
+    backdrop-filter: blur(30px);
+    -webkit-backdrop-filter: blur(30px);
+
     transform: translateX(100%);
-    transition: transform .45s cubic-bezier(.77,0,.18,1);
+    transition:
+        transform .45s cubic-bezier(.77,0,.18,1);
+
+    overflow-y: auto;
+    overflow-x: hidden;
+
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior: contain;
+
+    scrollbar-width: thin;
+    scrollbar-color:
+        rgba(255,255,255,.35)
+        transparent;
+}
+
+.mobile-menu::before {
+    content: "SYSTEM / NAVIGATION";
+    position: absolute;
+    top: 73px;
+    left: 28px;
+    color: rgba(126,232,255,.5);
+    font-family: "Space Mono", monospace;
+    font-size: 8px;
+    letter-spacing: 3px;
+}
+
+.mobile-menu::after {
+    content: "";
+    position: absolute;
+    top: 72px;
+    right: 28px;
+    width: 45px;
+    height: 1px;
+    background: var(--cyan);
+    box-shadow: 0 0 10px var(--cyan);
+}
+
+.mobile-menu::-webkit-scrollbar {
+    width: 5px;
+}
+
+.mobile-menu::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.mobile-menu::-webkit-scrollbar-thumb {
+    background: rgba(255,255,255,.35);
+    border-radius: 20px;
+}
+
+.mobile-menu::-webkit-scrollbar-thumb:hover {
+    background: rgba(255,255,255,.65);
 }
 
 .mobile-menu.open {
@@ -258,19 +431,125 @@ img {
 }
 
 .mobile-menu a {
-    padding: 18px 0;
-    border-bottom: 1px solid rgba(255,255,255,.12);
+    flex-shrink: 0;
+    position: relative;
+    padding: 18px 5px;
+    border-bottom: 1px solid rgba(255,255,255,.10);
     font-size: 23px;
     font-weight: 600;
+    transition:
+        color .25s ease,
+        padding-left .25s ease;
+}
+
+.mobile-menu a::before {
+    content: "";
+    display: inline-block;
+    width: 0;
+    height: 1px;
+    margin-right: 0;
+    vertical-align: middle;
+    background: var(--cyan);
+    box-shadow: 0 0 10px var(--cyan);
+    transition:
+        width .25s ease,
+        margin-right .25s ease;
+}
+
+.mobile-menu a:hover,
+.mobile-menu a:active {
+    color: var(--cyan);
+    padding-left: 10px;
+}
+
+.mobile-menu a:hover::before,
+.mobile-menu a:active::before {
+    width: 20px;
+    margin-right: 10px;
+}
+
+
+/* =========================================================
+   MOBILE SUPPORT / ACCOUNT
+========================================================= */
+
+.mobile-menu-actions {
+    flex-shrink: 0;
+    display: flex;
+    gap: 12px;
+    margin-top: 25px;
+}
+
+.mobile-menu-action {
+    flex: 1;
+    min-height: 58px;
+    padding: 12px 15px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+
+    border: 1px solid rgba(255,255,255,.14);
+    border-radius: 12px;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(255,255,255,.10),
+            rgba(255,255,255,.035)
+        );
+
+    color: #fff;
+
+    font-family: "Inter", Arial, sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition:
+        background .25s ease,
+        transform .25s ease,
+        border-color .25s ease,
+        box-shadow .25s ease;
+}
+
+.mobile-menu-action:hover {
+    background: rgba(126,232,255,.10);
+    border-color: rgba(126,232,255,.35);
+    box-shadow:
+        0 0 25px rgba(126,232,255,.08);
+    transform: translateY(-2px);
+}
+
+.mobile-menu-action:active {
+    transform: scale(.97);
+}
+
+.mobile-action-icon {
+    width: 24px;
+    height: 24px;
+    display: grid;
+    place-items: center;
+    flex-shrink: 0;
+}
+
+.mobile-action-icon svg {
+    width: 21px;
+    height: 21px;
 }
 
 .mobile-menu-footer {
-    margin-top: auto;
-    color: #666;
+    flex-shrink: 0;
+    margin-top: 30px;
+    padding-top: 22px;
+    color: #555;
     font-family: "Space Mono", monospace;
     font-size: 9px;
     line-height: 2;
     letter-spacing: 1px;
+    border-top: 1px solid rgba(255,255,255,.07);
 }
 
 
@@ -286,6 +565,7 @@ img {
     display: flex;
     justify-content: center;
     scroll-snap-align: start;
+    isolation: isolate;
 }
 
 .hero-image {
@@ -294,11 +574,12 @@ img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    object-position: center;
+    object-position: center center;
     z-index: 0;
-    transform: scale(1.02);
+    transform: scale(1.04);
     transition:
         transform 1.5s cubic-bezier(.2,.7,.2,1);
+    will-change: transform;
 }
 
 .hero.active .hero-image {
@@ -313,10 +594,10 @@ img {
     background:
         linear-gradient(
             180deg,
-            rgba(0,0,0,.55) 0%,
+            rgba(0,0,0,.60) 0%,
             rgba(0,0,0,.04) 35%,
             rgba(0,0,0,.12) 60%,
-            rgba(0,0,0,.78) 100%
+            rgba(0,0,0,.82) 100%
         );
     pointer-events: none;
 }
@@ -326,12 +607,37 @@ img {
     position: absolute;
     inset: 0;
     z-index: 1;
+    pointer-events: none;
     background:
         radial-gradient(
             ellipse at center,
-            transparent 40%,
-            rgba(0,0,0,.35) 100%
+            transparent 38%,
+            rgba(0,0,0,.45) 100%
         );
+}
+
+
+/* =========================================================
+   HERO FUTURISTIC EDGE
+========================================================= */
+
+.hero-content::before {
+    content: "";
+    position: absolute;
+    top: 95px;
+    left: 50%;
+    width: min(500px, 65vw);
+    height: 1px;
+    transform: translateX(-50%);
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(126,232,255,.45),
+            transparent
+        );
+    box-shadow:
+        0 0 18px rgba(126,232,255,.12);
     pointer-events: none;
 }
 
@@ -364,15 +670,18 @@ img {
     gap: 9px;
     margin-bottom: 18px;
     padding: 8px 13px;
-    border: 1px solid rgba(255,255,255,.25);
+    border: 1px solid rgba(255,255,255,.22);
     border-radius: 100px;
-    background: rgba(255,255,255,.08);
-    backdrop-filter: blur(12px);
+    background: rgba(255,255,255,.07);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
     font-family: "Space Mono", monospace;
     font-size: 9px;
     letter-spacing: 2px;
     text-transform: uppercase;
     animation: fadeUp .9s both;
+    box-shadow:
+        inset 0 0 20px rgba(255,255,255,.025);
 }
 
 .eyebrow::before {
@@ -380,8 +689,10 @@ img {
     width: 6px;
     height: 6px;
     border-radius: 50%;
-    background: #fff;
-    box-shadow: 0 0 12px #fff;
+    background: var(--cyan);
+    box-shadow:
+        0 0 8px var(--cyan),
+        0 0 18px rgba(126,232,255,.8);
 }
 
 
@@ -420,7 +731,7 @@ img {
 
 
 /* =========================================================
-   MODEL Y SPECIAL VISUAL
+   MODEL Y
 ========================================================= */
 
 .model-y-content {
@@ -476,9 +787,13 @@ img {
     border: 1px solid rgba(255,255,255,.18);
     border-radius: 15px;
     overflow: hidden;
-    background: rgba(0,0,0,.24);
+    background: rgba(0,0,0,.28);
     backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
     animation: fadeUp 1s .4s both;
+    box-shadow:
+        inset 0 0 25px rgba(255,255,255,.02),
+        0 15px 40px rgba(0,0,0,.2);
 }
 
 .spec {
@@ -588,7 +903,8 @@ img {
 .btn-light:hover {
     background: #fff;
     box-shadow:
-        0 15px 45px rgba(0,0,0,.3);
+        0 15px 45px rgba(0,0,0,.3),
+        0 0 20px rgba(255,255,255,.12);
 }
 
 .btn-dark {
@@ -601,7 +917,8 @@ img {
 .btn-dark:hover {
     background: #000;
     box-shadow:
-        0 15px 40px rgba(0,0,0,.45);
+        0 15px 40px rgba(0,0,0,.45),
+        0 0 20px rgba(126,232,255,.08);
 }
 
 
@@ -624,7 +941,7 @@ img {
 
 
 /* =========================================================
-   FLOATING PERFORMANCE BADGE
+   PERFORMANCE BADGE
 ========================================================= */
 
 .performance-badge {
@@ -640,18 +957,36 @@ img {
     justify-content: center;
     align-items: center;
     border-radius: 50%;
-    border: 1px solid rgba(255,255,255,.2);
+    border: 1px solid rgba(126,232,255,.25);
     background:
         radial-gradient(
             circle,
-            rgba(255,255,255,.13),
-            rgba(0,0,0,.18)
+            rgba(126,232,255,.12),
+            rgba(0,0,0,.22)
         );
     backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
     box-shadow:
-        0 20px 50px rgba(0,0,0,.35);
+        0 20px 50px rgba(0,0,0,.35),
+        0 0 35px rgba(126,232,255,.08);
     animation:
         floatBadge 4s ease-in-out infinite;
+}
+
+.performance-badge::before,
+.performance-badge::after {
+    content: "";
+    position: absolute;
+    border-radius: 50%;
+    border: 1px solid rgba(126,232,255,.12);
+}
+
+.performance-badge::before {
+    inset: 7px;
+}
+
+.performance-badge::after {
+    inset: -7px;
 }
 
 .performance-badge strong {
@@ -722,6 +1057,7 @@ img {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    object-position: center;
 }
 
 .footer-section::after {
@@ -732,7 +1068,7 @@ img {
         linear-gradient(
             180deg,
             rgba(0,0,0,.1),
-            rgba(0,0,0,.8)
+            rgba(0,0,0,.82)
         );
 }
 
@@ -791,9 +1127,11 @@ img {
     z-index: 4;
     width: 25px;
     height: 39px;
-    border: 1px solid rgba(255,255,255,.55);
+    border: 1px solid rgba(126,232,255,.45);
     border-radius: 20px;
     transform: translateX(-50%);
+    box-shadow:
+        0 0 15px rgba(126,232,255,.08);
 }
 
 .scroll-indicator::after {
@@ -804,8 +1142,9 @@ img {
     width: 3px;
     height: 7px;
     border-radius: 10px;
-    background: #fff;
+    background: var(--cyan);
     transform: translateX(-50%);
+    box-shadow: 0 0 8px var(--cyan);
     animation: scrollDot 1.6s infinite;
 }
 
@@ -878,6 +1217,10 @@ img {
     .spec {
         min-width: 105px;
     }
+
+    .hero-image {
+        object-position: center center;
+    }
 }
 
 
@@ -900,31 +1243,110 @@ img {
         width: 88px;
     }
 
+    .icon-btn {
+        width: 36px;
+        height: 36px;
+    }
+
     .hero {
         min-height: 100svh;
+        height: 100svh;
+    }
+
+    /*
+       IMPORTANT:
+       Keep the image inside the viewport on phones.
+       The image is still full-screen, but the crop is
+       controlled instead of being zoomed excessively.
+    */
+
+    .hero-image {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transform: scale(1.01);
+    }
+
+    .hero.active .hero-image {
+        transform: scale(1);
+    }
+
+    .hero::before {
+        background:
+            linear-gradient(
+                180deg,
+                rgba(0,0,0,.68) 0%,
+                rgba(0,0,0,.10) 35%,
+                rgba(0,0,0,.18) 55%,
+                rgba(0,0,0,.88) 100%
+            );
+    }
+
+    /*
+       Different image framing for portrait screens.
+    */
+
+    #model-y .hero-image {
+        object-position: 56% center;
+    }
+
+    #model-3 .hero-image {
+        object-position: 55% center;
+    }
+
+    #cybertruck .hero-image {
+        object-position: 58% center;
+    }
+
+    #model-s .hero-image {
+        object-position: 52% center;
+    }
+
+    #solar-roof .hero-image {
+        object-position: center center;
+    }
+
+    #solar-panels .hero-image {
+        object-position: center center;
+    }
+
+    #powerwall .hero-image {
+        object-position: 55% center;
     }
 
     .hero-content {
         width: calc(100% - 25px);
-        padding-top: 100px;
+        min-height: 100svh;
+        padding-top: 92px;
         padding-bottom: 28px;
     }
 
-    .hero-image {
-        object-position: center;
+    .hero-content::before {
+        top: 78px;
+        width: 55vw;
+    }
+
+    .eyebrow {
+        margin-bottom: 14px;
+        padding: 7px 10px;
+        font-size: 7px;
+        letter-spacing: 1.5px;
     }
 
     .hero-title {
-        font-size: clamp(45px, 14vw, 65px);
+        font-size: clamp(43px, 13vw, 65px);
         letter-spacing: -3px;
     }
 
     .hero-subtitle {
+        margin-top: 12px;
+        max-width: 330px;
         font-size: 14px;
+        line-height: 1.45;
     }
 
     .hero-small {
-        font-size: 9px;
+        font-size: 8px;
     }
 
     .model-y-content {
@@ -933,33 +1355,40 @@ img {
     }
 
     .model-y-copy {
+        width: 100%;
         max-width: 100%;
     }
 
     .model-y-title {
-        font-size: clamp(60px, 20vw, 90px);
+        font-size: clamp(57px, 19vw, 90px);
         letter-spacing: -5px;
     }
 
     .model-y-tagline {
+        margin-top: 16px;
         font-size: 18px;
     }
 
     .model-y-description {
         max-width: 340px;
-        font-size: 11px;
+        margin-left: auto;
+        margin-right: auto;
+        font-size: 10.5px;
+        line-height: 1.65;
     }
 
     .specs {
         width: 100%;
         max-width: 370px;
+        margin-top: 18px;
         justify-content: center;
+        border-radius: 12px;
     }
 
     .spec {
         flex: 1;
         min-width: 0;
-        padding: 12px 5px;
+        padding: 11px 4px;
     }
 
     .spec-value {
@@ -967,8 +1396,8 @@ img {
     }
 
     .spec-label {
-        font-size: 6px;
-        letter-spacing: .5px;
+        font-size: 5.5px;
+        letter-spacing: .35px;
     }
 
     .performance-badge {
@@ -984,21 +1413,33 @@ img {
         width: 100%;
         flex-direction: column;
         align-items: center;
-        gap: 9px;
+        gap: 8px;
     }
 
     .btn {
         width: min(100%, 350px);
-        min-height: 46px;
+        min-height: 45px;
+        padding: 11px 18px;
+        font-size: 12px;
     }
 
     .disclaimer {
         max-width: 330px;
-        font-size: 7px;
+        font-size: 6.5px;
+        line-height: 1.6;
     }
 
     .scroll-indicator {
         display: none;
+    }
+
+    .footer-section {
+        min-height: 100svh;
+        height: 100svh;
+    }
+
+    .footer-image {
+        object-position: center center;
     }
 
     .footer-title {
@@ -1010,35 +1451,174 @@ img {
         font-size: 7px;
         gap: 8px 12px;
     }
+
+
+    /* MOBILE MENU */
+
+    .mobile-menu {
+        padding-left: 22px;
+        padding-right: 22px;
+    }
+
+    .mobile-menu::before {
+        left: 22px;
+    }
+
+    .mobile-menu::after {
+        right: 22px;
+    }
+
+    .mobile-menu a {
+        padding: 17px 3px;
+        font-size: 21px;
+    }
+
+    .mobile-menu-actions {
+        gap: 8px;
+        margin-top: 22px;
+    }
+
+    .mobile-menu-action {
+        min-height: 54px;
+        padding: 10px;
+        font-size: 12px;
+    }
+
+    .mobile-menu-footer {
+        margin-top: 25px;
+        padding-bottom: 5px;
+    }
 }
 
 
 /* =========================================================
-   SMALL PHONES
+   VERY SMALL PHONES
 ========================================================= */
 
 @media (max-width: 380px) {
 
+    .navbar {
+        padding: 0 12px;
+    }
+
+    .brand {
+        width: 80px;
+    }
+
     .hero-content {
         width: calc(100% - 18px);
-        padding-top: 90px;
+        padding-top: 84px;
+        padding-bottom: 22px;
+    }
+
+    .hero-title {
+        font-size: 42px;
     }
 
     .model-y-title {
-        font-size: 55px;
+        font-size: 53px;
     }
 
     .model-y-tagline {
-        font-size: 16px;
+        font-size: 15px;
+    }
+
+    .model-y-description {
+        font-size: 9.5px;
+        max-width: 310px;
     }
 
     .spec-value {
-        font-size: 12px;
+        font-size: 11px;
+    }
+
+    .spec-label {
+        font-size: 5px;
     }
 
     .btn {
-        font-size: 12px;
-        min-height: 44px;
+        width: 100%;
+        font-size: 11px;
+        min-height: 43px;
+    }
+
+    .mobile-menu {
+        padding-left: 18px;
+        padding-right: 18px;
+    }
+
+    .mobile-menu::before {
+        left: 18px;
+    }
+
+    .mobile-menu::after {
+        right: 18px;
+    }
+
+    .mobile-menu a {
+        font-size: 19px;
+        padding: 15px 2px;
+    }
+
+    .mobile-menu-action {
+        min-height: 51px;
+        font-size: 11px;
+    }
+
+    .mobile-action-icon svg {
+        width: 19px;
+        height: 19px;
+    }
+}
+
+
+/* =========================================================
+   LANDSCAPE PHONES
+========================================================= */
+
+@media (max-width: 900px) and (orientation: landscape) {
+
+    .hero,
+    .hero-content,
+    .footer-section,
+    .footer-content {
+        min-height: 100svh;
+        height: 100svh;
+    }
+
+    .hero-content {
+        padding-top: 75px;
+        padding-bottom: 15px;
+    }
+
+    .model-y-title {
+        font-size: 52px;
+    }
+
+    .model-y-description {
+        max-width: 480px;
+        font-size: 9px;
+    }
+
+    .specs {
+        margin-top: 12px;
+    }
+
+    .spec {
+        padding: 7px 12px;
+    }
+
+    .buttons {
+        flex-direction: row;
+    }
+
+    .btn {
+        min-width: 170px;
+        min-height: 40px;
+    }
+
+    .mobile-menu {
+        padding-top: 75px;
     }
 }
 
@@ -1074,14 +1654,8 @@ img {
 ========================================================= -->
 
 <div id="loader">
-    <div class="loader-box">
 
-        <!-- Tesla T + Tesla Wordmark -->
-        <img
-            class="loader-logo"
-            src="https://i.pinimg.com/originals/b9/44/9a/b9449a72d36fde245b681be76d60c927.png"
-            alt="Tesla"
-        >
+    <div class="loader-box">
 
         <div class="loader-line"></div>
 
@@ -1090,6 +1664,7 @@ img {
         </div>
 
     </div>
+
 </div>
 
 
@@ -1104,10 +1679,12 @@ img {
         href="#model-y"
         aria-label="Tesla home"
     >
+
         <img
             src="https://indigo-officalwebsite.oss-cn-beijing.aliyuncs.com/uat/img_shop_tesla_cdda5f5a1d.png"
             alt="Tesla"
         >
+
     </a>
 
 
@@ -1133,8 +1710,6 @@ img {
             A
         </button>
 
-
-        <!-- SUPPORT: SAME ICON, NO LINK -->
 
         <button
             class="icon-btn desktop-only"
@@ -1166,8 +1741,6 @@ img {
 
         </button>
 
-
-        <!-- ACCOUNT: SAME ICON, NO LINK/ACTION -->
 
         <button
             class="icon-btn desktop-only"
@@ -1226,7 +1799,11 @@ img {
      MOBILE MENU
 ========================================================= -->
 
-<nav class="mobile-menu" id="mobileMenu">
+<nav
+    class="mobile-menu"
+    id="mobileMenu"
+    aria-label="Mobile navigation"
+>
 
     <a href="#model-y">Model Y</a>
     <a href="#model-3">Model 3</a>
@@ -1237,10 +1814,77 @@ img {
     <a href="#powerwall">Powerwall</a>
     <a href="#accessories">Accessories</a>
 
-    <div class="mobile-menu-footer">
-        TESLA-INSPIRED FRONTEND PROJECT<br>
-        HTML5 • CSS3 • JAVASCRIPT<br>
-        RESPONSIVE • INTERACTIVE • MODERN
+
+    <!-- SUPPORT + ACCOUNT INSIDE MOBILE MENU -->
+
+    <div class="mobile-menu-actions">
+
+        <button
+            class="mobile-menu-action"
+            type="button"
+            aria-label="Support"
+        >
+
+            <span class="mobile-action-icon">
+
+                <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.8"
+                >
+
+                    <circle cx="12" cy="12" r="9"/>
+
+                    <path
+                        d="M9.5 9a2.5 2.5 0 1 1 4.1 1.9c-.9.7-1.6 1.1-1.6 2.3"
+                    />
+
+                    <circle
+                        cx="12"
+                        cy="16.5"
+                        r=".6"
+                        fill="currentColor"
+                    />
+
+                </svg>
+
+            </span>
+
+            <span>Support</span>
+
+        </button>
+
+
+        <button
+            class="mobile-menu-action"
+            type="button"
+            aria-label="Account"
+        >
+
+            <span class="mobile-action-icon">
+
+                <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.8"
+                >
+
+                    <circle cx="12" cy="8" r="3.5"/>
+
+                    <path
+                        d="M5 20c.8-3.4 3.2-5.2 7-5.2s6.2 1.8 7 5.2"
+                    />
+
+                </svg>
+
+            </span>
+
+            <span>Account</span>
+
+        </button>
+
     </div>
 
 </nav>
@@ -1812,13 +2456,18 @@ img {
             Accessories
         </h2>
 
-
+<br>
+<br>
+<br>
+<br>
+<br>
         <a
             class="btn btn-light"
             href="#blank"
             target="_blank"
             rel="noopener noreferrer"
         >
+        
             Shop Tesla
         </a>
 
@@ -1981,6 +2630,35 @@ document
     });
 
 
+/*
+   Support and Account are intentionally visual-only,
+   matching the desktop behaviour.
+*/
+
+document
+    .querySelectorAll(".mobile-menu-action")
+    .forEach(button => {
+
+        button.addEventListener(
+            "click",
+            () => {
+
+                button.style.transform =
+                    "scale(.97)";
+
+                setTimeout(() => {
+
+                    button.style.transform =
+                        "";
+
+                }, 120);
+
+            }
+        );
+
+    });
+
+
 document.addEventListener(
     "keydown",
     event => {
@@ -2043,25 +2721,11 @@ languageBtn.addEventListener(
 
 
 /* =========================================================
-   ACCOUNT
-========================================================= */
-
-/*
-   Account link/action removed.
-
-   The account button remains visually
-   identical but performs no external action.
-*/
-
-
-/* =========================================================
    ACTIVE HERO ANIMATION
 ========================================================= */
 
 const heroes =
-    document.querySelectorAll(
-        ".hero"
-    );
+    document.querySelectorAll(".hero");
 
 
 const observer =
@@ -2170,6 +2834,25 @@ document
         );
 
     });
+
+
+/* =========================================================
+   PREVENT MOBILE MENU SCROLL FROM MOVING PAGE
+========================================================= */
+
+mobileMenu.addEventListener(
+    "touchmove",
+    event => {
+
+        if (mobileMenu.scrollHeight > mobileMenu.clientHeight) {
+
+            event.stopPropagation();
+
+        }
+
+    },
+    { passive: true }
+);
 
 </script>
 
